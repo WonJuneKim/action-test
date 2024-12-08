@@ -1,9 +1,13 @@
 name: test
 #기준
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
+  schedule:
+    # 한국 시간 5시가 아님.....(한국 시간 14시)
+    - cron '0.5 * * 1-5'
 
 #실행한 것들
 jobs:
