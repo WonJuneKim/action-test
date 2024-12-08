@@ -33,4 +33,11 @@ jobs:
           ls ${{ github.workspace }}
 
       - run: echo "🍏 This job's status is ${{ job.status }}."
+      - name: PR Reminder
+        uses: WonJuneKim/action-job@main
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-owner: WonJuneKim
+          repo-name: action-test
+          day: 0
 
