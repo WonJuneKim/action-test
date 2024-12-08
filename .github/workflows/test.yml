@@ -1,0 +1,32 @@
+name: test
+#기준
+on:
+  push:
+    branches:
+      - main
+
+#실행한 것들
+jobs:
+  # 이름 - 구분하기 위한 것들, 이게 문제가 되는 부분은 없음
+  hello_world:
+    runs-on: [ubuntu-latest]
+    steps:
+      # run -> 일반적으로, 쉘 스크립트에서 실행하는 것과 같다.
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+
+      #name: 구분하기 위한 것으로 없어도댐
+      #uses: 누가 만들어놓은 외부 job을 실행함
+      - name: Check out repository code
+        uses: actions/checkout@v3
+
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+
+      - run: echo "🍏 This job's status is ${{ job.status }}."
+
